@@ -7,7 +7,9 @@
  * */
 list_ptr list_new(void)
 {
-  return NULL;
+  list_ptr list;
+  list = NULL;
+  return list;
 }
 
 /* Add a new cel to a list. 
@@ -15,7 +17,10 @@ list_ptr list_new(void)
  * */
 list_ptr list_add(sprite_t sprite, list_ptr list)
 {
-  return NULL;
+  list_ptr new = malloc(sizeof(s_list_node_t));
+  new -> data = sprite;
+  new -> next = list;
+  return new;
 }
 
 /* Return the length of a list
