@@ -40,6 +40,18 @@ int list_length(list_ptr l)
  * */
 void list_reverse(list_ptr * l)
 {
+    list_ptr prev = NULL;
+    list_ptr current = *l;
+    list_ptr next = NULL;
+
+    while (current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+
+    *l = prev;
 }
 
 /* Copy a list to another one. 
@@ -62,7 +74,17 @@ bool list_is_empty(list_ptr l)
  * */
 sprite_t list_head_sprite(list_ptr l)
 {
-  return NULL;
+  // if(l == NULL) return NULL;
+
+  // list_ptr tmp = l;
+  // list_reverse(&tmp);
+
+  // while (tmp->next != NULL)
+  // {
+  //   tmp = tmp->next;
+  // }
+  
+  // return tmp->data;
 }
 
 /* Return the next cel in list or NULL
@@ -78,13 +100,34 @@ list_ptr list_next(list_ptr l)
  * */
 sprite_t list_pop_sprite(list_ptr * l)
 {
-  return NULL;
+  // list_ptr tmp = *l;
+  // if(tmp == NULL) return NULL;
+  // if(tmp->next == NULL) return tmp->data;
+  // while (tmp->next->next != NULL)
+  // {
+  //   tmp = tmp->next;
+  // }
+  
+  // sprite_t sprite = tmp->next->data;
+  // tmp->next = NULL;
+  // return sprite;
 }
 
 /* Remove the given cel in a list
  * */
 void list_remove(list_ptr elt, list_ptr *l)
 {
+  // list_ptr tmp = *l;
+  // if(tmp == NULL) return;
+
+  // while (tmp->next != NULL)
+  // {
+  //   if(tmp == elt)
+  //   {
+  //     tmp = tmp->next;
+  //     return;
+  //   }
+  // }
 }
 
 /* Wipe out a list. 
