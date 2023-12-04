@@ -7,11 +7,6 @@
  * */
 list_ptr list_new(void)
 {
-<<<<<<< HEAD
-  int b = 42;
-=======
-  int a = 12;
->>>>>>> 6b4fbe0 (Premier commit test)
   return NULL;
 }
 
