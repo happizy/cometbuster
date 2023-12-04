@@ -7,7 +7,6 @@
  * */
 list_ptr list_new(void)
 {
-  int b = 42;
   return NULL;
 }
 
