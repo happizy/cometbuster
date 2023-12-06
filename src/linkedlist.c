@@ -88,7 +88,7 @@ list_ptr list_clone(list_ptr list)
  * */
 bool list_is_empty(list_ptr l)
 {
-  return true;
+  return l==NULL;
 }
 
 /* Search the first cel of the list & 
@@ -116,7 +116,8 @@ sprite_t list_head_sprite(list_ptr l)
  * */
 list_ptr list_next(list_ptr l)
 {
-  return NULL;
+  if(l== NULL||l->next == NULL)return NULL;
+  return l->next;
 }
 
 /* Search the last cel of a list 
