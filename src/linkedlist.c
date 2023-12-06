@@ -28,15 +28,11 @@ list_ptr list_add(sprite_t sprite, list_ptr list)
 int list_length(list_ptr l)
 {
   int i= 0;
-  if(l == NULL) return l;
+  if(l == NULL) return 0;
   do {
     i += 1;
     l = l -> next
-  }while (l != NULL);
-  {
-    /* code */
-  }
-  
+  }while (l != NULL);  
   return i;
 }
 
