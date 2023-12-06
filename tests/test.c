@@ -25,27 +25,26 @@ void list_reverse(list_ptr * l)
     *l = prev;
 }
 
-// /* Search the first cel of the list & 
-//  *  return the associated sprite 
-//  * */
-// int list_head_sprite(list_ptr l)
-// {
-//   if(l == NULL) return 0;
+/* Search the first cel of the list & 
+ *  return the associated sprite 
+ * */
+int list_head_sprite(list_ptr l)
+{
+  if(l == NULL) return 0;
 
-//   list_reverse(&l);  
-//   list_ptr tmp = l;
-//   list_reverse(&l);
+  list_reverse(&l);  
+  list_ptr tmp = l;
 
+  while (tmp->next != NULL)
+  {
+    tmp = tmp->next;
+  }
 
+  int data = tmp->data;
+  list_reverse(&l);
 
-//   while (tmp->next != 0)
-//   {
-//     tmp = tmp->next;
-//   }
-
-  
-//   return tmp->data;
-// }
+  return data;
+}
 
 /* Search the last cel of a list 
  *  Remove the cel from the list
@@ -70,17 +69,60 @@ int list_pop_sprite(list_ptr * l)
  * */
 void list_remove(list_ptr elt, list_ptr *l)
 {
-  list_ptr tmp = *l;
-  if(tmp == NULL) return;
-
-  while (tmp->next != NULL)
-  {
-    if(tmp == elt)
-    {
-      tmp = tmp->next;
-      return;
-    }
+  if (*l == NULL) {
+    return;
   }
+
+  if (*l == elt) {
+    *l = elt->next;
+    free(elt);
+    return;
+  }
+
+  list_ptr prev = *l;
+  list_ptr current = (*l)->next;
+
+  while (current != NULL && current != elt) {
+    prev = current;
+    current = current->next;
+  }
+
+  if (current == NULL) {
+    return;
+  }
+
+  prev->next = current->next;
+  free(current);
+}
+
+/* Copy a list to another one. 
+ *  Return the new list
+ * */
+list_ptr list_clone(list_ptr list)
+{
+  if (list == NULL) {
+    return NULL;
+  }
+
+  list_ptr new_list = (list_ptr)malloc(sizeof(s_list_node_t));
+  new_list->data = list->data;
+  new_list->next = NULL;
+
+  list_ptr current = list->next;
+  list_ptr new_current = new_list;
+
+  while (current != NULL) {
+    list_ptr new_node = (list_ptr)malloc(sizeof(s_list_node_t));
+    new_node->data = current->data;
+    new_node->next = NULL;
+
+    new_current->next = new_node;
+    new_current = new_node;
+
+    current = current->next;
+  }
+
+  return new_list;
 }
 
 void printlist(list_ptr l)
@@ -108,31 +150,45 @@ int main(){
     l3->next = l4;
     l4->next = NULL;
     
-    printf("avant : \n");
+    // printf("avant head : \n");
+    // printlist(l);
+
+    // printf("haut de liste : %d\n",list_head_sprite(l));
+
+    // printf("après head, avant pop :\n");
+    // printlist(l);
+    
+    // printf("pop fin de liste : %d\n", list_pop_sprite(&l));
+    // printf("pop fin de liste : %d\n", list_pop_sprite(&l));
+
+    // printf("après 2 pops :\n");
+    // printlist(l);
+
+    // list_reverse(&l);
+
+    // printf("après reverse :\n");
+    // printlist(l);
+
+    // list_reverse(&l);
+
+    // printf("après deuxième reverse : \n");
+    // printlist(l);
+
+    // printf("avant remove :\n");
+    // printlist(l);
+
+    // list_remove(l2,&l);
+
+    // printf("après remove de 2 :\n");
+    // printlist(l);
+
+    printf("list original\n");
     printlist(l);
 
-    printf("apres head: \n");
-    printlist(l);
-    list_reverse(&l);
-    printf("apres reverse: \n");
-    printlist(l);
-    list_reverse(&l);
-    printf("apres reverse 2 : \n");
-    printlist(l);
+    list_ptr l6 = list_clone(l);
 
-    printf("avant pop : \n");
-    printlist(l);
-    printf("dernier element et suppression : %d\n", list_pop_sprite(&l));
-
-    printf("apres pop et avant remove : \n");
-    printlist(l);
-    list_remove(l2, &l);
-
-    while (l != NULL)
-    {
-        printf("%d\n", l->data);
-        l = l->next;
-    }
+    printf("list clone\n");
+    printlist(l6);
     
 
 }
