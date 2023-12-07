@@ -31,7 +31,7 @@ int list_length(list_ptr l)
   if(l == NULL) return 0;
   do {
     i += 1;
-    l = l -> next
+    l = l -> next;
   }while (l != NULL);  
   return i;
 }
