@@ -3,3 +3,5 @@ src/cometbuster
 src/*.o
 src/cometbuster
 *.o
+src/cometbuster
+*.o
