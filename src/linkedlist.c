@@ -96,7 +96,7 @@ bool list_is_empty(list_ptr l)
  * */
 sprite_t list_head_sprite(list_ptr l)
 {
-  if(l == NULL) return 0;
+  if(l == NULL) return NULL;
 
   list_reverse(&l);  
   list_ptr tmp = l;
