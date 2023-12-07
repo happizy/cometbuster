@@ -125,10 +125,6 @@ list_ptr list_next(list_ptr l)
  * */
 sprite_t list_pop_sprite(list_ptr * l)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> a7f98ae (Added list_clone and fixed buggy functions)
   list_ptr tmp = *l;
   if(tmp == NULL) return 0;
   if(tmp->next == NULL) return tmp->data;
@@ -136,38 +132,16 @@ sprite_t list_pop_sprite(list_ptr * l)
   {
     tmp = tmp->next;
   }
-<<<<<<< HEAD
   
   sprite_t sprite = tmp->next->data;
   tmp->next = NULL;
   return sprite;
-=======
-  // list_ptr tmp = *l;
-  // if(tmp == NULL) return NULL;
-  // if(tmp->next == NULL) return tmp->data;
-  // while (tmp->next->next != NULL)
-  // {
-  //   tmp = tmp->next;
-  // }
-  
-  // sprite_t sprite = tmp->next->data;
-  // tmp->next = NULL;
-  // return sprite;
->>>>>>> e56fa61 (Added list_reverse and buggy list_head_sprite, list_pop_sprite and list_remove)
-=======
-  
-  sprite_t sprite = tmp->next->data;
-  tmp->next = NULL;
-  return sprite;
->>>>>>> a7f98ae (Added list_clone and fixed buggy functions)
 }
 
 /* Remove the given cel in a list
  * */
 void list_remove(list_ptr elt, list_ptr *l)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
   if (*l == NULL) {
     return;
   }
@@ -192,45 +166,6 @@ void list_remove(list_ptr elt, list_ptr *l)
 
   prev->next = current->next;
   free(current);
-=======
-  // list_ptr tmp = *l;
-  // if(tmp == NULL) return;
-
-  // while (tmp->next != NULL)
-  // {
-  //   if(tmp == elt)
-  //   {
-  //     tmp = tmp->next;
-  //     return;
-  //   }
-  // }
->>>>>>> e56fa61 (Added list_reverse and buggy list_head_sprite, list_pop_sprite and list_remove)
-=======
-  if (*l == NULL) {
-    return;
-  }
-
-  if (*l == elt) {
-    *l = elt->next;
-    free(elt);
-    return;
-  }
-
-  list_ptr prev = *l;
-  list_ptr current = (*l)->next;
-
-  while (current != NULL && current != elt) {
-    prev = current;
-    current = current->next;
-  }
-
-  if (current == NULL) {
-    return;
-  }
-
-  prev->next = current->next;
-  free(current);
->>>>>>> a7f98ae (Added list_clone and fixed buggy functions)
 }
 
 /* Wipe out a list. 
