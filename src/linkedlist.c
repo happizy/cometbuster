@@ -116,7 +116,7 @@ sprite_t list_head_sprite(list_ptr l)
  * */
 list_ptr list_next(list_ptr l)
 {
-  if(l== NULL||l->next == NULL)return NULL;
+  if(l==NULL)return l;
   return l->next;
 }
 
