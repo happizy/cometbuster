@@ -31,7 +31,7 @@ int list_length(list_ptr l)
   if(l == NULL) return 0;
   do {
     i += 1;
-    l = l -> next
+    l = l -> next;
   }while (l != NULL);  
   return i;
 }
@@ -88,7 +88,7 @@ list_ptr list_clone(list_ptr list)
  * */
 bool list_is_empty(list_ptr l)
 {
-  return l==NULL;
+  return l == NULL;
 }
 
 /* Search the first cel of the list & 
@@ -116,7 +116,7 @@ sprite_t list_head_sprite(list_ptr l)
  * */
 list_ptr list_next(list_ptr l)
 {
-  if(l==NULL)return l;
+  if(l == NULL) return NULL;
   return l->next;
 }
 
@@ -174,4 +174,12 @@ void list_remove(list_ptr elt, list_ptr *l)
  * */
 void list_free(list_ptr l)
 {
+  list_ptr tmp;
+  while (l != NULL)
+  {
+    tmp = l;
+    l = l->next;
+    sprite_free(tmp->data);
+    free(tmp);
+  }
 }
