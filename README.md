@@ -1,6 +1,6 @@
-=======
-README
-=======
+=========================
+# Comet buster
+=========================
 
 1. Compiling & running
 2. Sprites conventions
@@ -10,9 +10,9 @@ README
 6. Tools Used
 7. Future Development
 
-======================
-1. Compiling & running
-======================
+=========================
+## 1. Compiling & running
+=========================
 
 Compiling:
 $> make
@@ -24,9 +24,9 @@ Cleaning:
 $> make clean
 
 
-======================
-2. Sprites conventions
-======================
+=========================
+## 2. Sprites conventions
+=========================
 
 Few sprites are provided (in sprites directory). Feel free to use your own
 ones.
@@ -55,9 +55,9 @@ nyancat-technyancolor-left-12_32x51.bmp means that this sprite is:
   - 32 px high
   - 51 px wide
 
-==========
-3. Playing
-==========
+=========================
+## 3. Playing
+=========================
 
 Game control:
   - q or esc: quit the game
@@ -83,9 +83,9 @@ Hyperspace: up and down edges are connected, so do left and right ones. Fly to
 the left, you will appear on the right. Asteroids and enemies also know the
 secret of hyperspace...
 
-==========================
-4. LinkedList Integration
-==========================
+=========================
+## 4. LinkedList Integration
+=========================
 
 We have added LinkedList functionality to manage sprites in the game. Here are the new functions:
 
@@ -274,30 +274,30 @@ void list_free(list_ptr l)
 }
 ```
 
-====================
-5. Known Bugs
-
+=========================
+## 5. Known Bugs
+=========================
 We encountered some bugs that are not yet fixed:
 
 - Crashing the ship in an asteroid results in a segmentation fault. This is due to the list_remove() function trying to access protected memory in main.c.
 - Using keys not planned for the gameplay will result in a segmentation fault. Should add a default case for unrecognized keys.
 
-=================
-6. Tools Used
-
+=========================
+## 6. Tools Used
+=========================
 - GitHub (https://github.com/happizy/cometbuster) used for versioning and teamwork.
 - Copilot was used in some cases for inspiration.
 - Discord and git push notifications were the primary communication methods.
 
 =========================
-7. Future Development
-
+## 7. Future Development
+=========================
 We would have liked to add power-ups to the game like intangibleness and speed boosts. The scoring system did not get updated nor the multiplayer game mode.
 
 Enjoy :)
 
 ========================================================
-
+```
 +      o     +              o   
     +             o     +       +
 o          +
@@ -312,3 +312,4 @@ _-_-_-_-_-_-_-""  ""
 o        o         o      o     +
     o           +
 +      +     o        o      +  
+```
